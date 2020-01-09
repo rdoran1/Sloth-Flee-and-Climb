@@ -6,13 +6,14 @@ using UnityEngine.UI;
 public class EnergyDecay : MonoBehaviour
 {
     public Text energyText;
-    private int energy;
+    private float energy;
     // Start is called before the first frame update
     void Start()
     {
         energy = 100;
         UpdateEnergy();
     }
+    
 
     public void EnergyLoss()
     {
@@ -22,7 +23,7 @@ public class EnergyDecay : MonoBehaviour
 
     public void EnergyGain()
     {
-        energy++;
+        energy = 100;
         UpdateEnergy();
     }
 
