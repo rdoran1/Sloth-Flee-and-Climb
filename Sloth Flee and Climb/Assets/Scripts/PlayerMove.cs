@@ -6,6 +6,8 @@ public class PlayerMove : MonoBehaviour
 {
     Rigidbody rb;
     public float speed = 1.0f;
+    public EnergyDecay energy;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,11 +27,19 @@ public class PlayerMove : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.W))
         {
-            rb.velocity = new Vector3(0,1,0) * speed;
+            rb.velocity = new Vector3(0, 1, 0) * speed;
         }
         if (Input.GetKey(KeyCode.S))
         {
             rb.velocity = new Vector3(0, -1, 0) * speed;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        while(collision.gameObject.tag != "Surface")
+        {
+            energy.EnergyLoss();
         }
     }
 }
